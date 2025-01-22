@@ -1,0 +1,62 @@
+
+Este archivo contiene las convenciones y reglas que seguiremos en este proyecto para garantizar un flujo de trabajo organizado y eficiente. Por favor, respeta estas pautas para facilitar la colaboración y la escalabilidad del proyecto.
+
+## Nombres de Nodos
+- Utilizaremos camelCase para nombrar nodos, ya sean 2D, 3D o simples nodos.
+  - Ejemplo: playerCharacter, enemySpawner, mainCamera.
+
+-------------------------------------------------------------------------------------------
+
+## Convenciones para Archivos
+1. Los archivos deben nombrarse en minúsculas y con palabras separadas por guiones bajos (snake_case) para evitar confusiones en diferentes sistemas operativos.
+   - Ejemplo: player.gd, enemy.gd, main_menu.tscn.
+
+2. Estructura recomendada:
+   - Las escenas deben ubicarse en el directorio:  
+	 res://scenes/  
+	 Ejemplo: res://scenes/player/player.tscn.
+
+   - Los scripts asociados a escenas deben tener el mismo nombre y ubicarse en:  
+	 res://scripts/.  
+	 Ejemplo: res://scripts/player/player.gd.
+
+   - Los recursos globales (scripts reutilizables) irán en:  
+	 res://scripts/global/.
+
+   - Los assets (imágenes, sonidos, fuentes, etc.) deben estar organizados en:  
+	 res://assets/.  
+	 Ejemplo: res://assets/sprites/player.png.
+
+3. La escena principal siempre será main.tscn y debe ubicarse en el directorio raíz.
+
+-------------------------------------------------------------------------------------------
+
+## Árbol de Directorios
+Aquí tienes un esquema representativo (EJEMPLO) del árbol de directorios para este proyecto:
+
+res://
+├── assets/
+│   ├── sprites/
+│   ├── sounds/
+│   └── fonts/
+├── scenes/
+│   ├── player/
+│   │   └── player.tscn
+│   ├── enemy/
+│   │   └── enemy.tscn
+│   └── main_menu.tscn
+├── scripts/
+│   ├── global/
+│   │   └── game_manager.gd
+│   ├── player/
+│   │   └── player.gd
+│   ├── enemy/
+│   │   └── enemy.gd
+└── main.tscn
+
+-------------------------------------------------------------------------------------------
+
+## Otras Buenas Prácticas
+- Siempre comenta tu código donde sea necesario, explicando funciones o partes importantes.
+- Asegúrate de hacer push frecuente en el repositorio para evitar conflictos y pérdida de trabajo.
+- Antes de realizar cambios significativos, coordina con el equipo para mantener la coherencia.
