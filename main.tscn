@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://cvnsnrwvhfbr0"]
+[gd_scene load_steps=3 format=3 uid="uid://cvnsnrwvhfbr0"]
+
+[ext_resource type="PackedScene" uid="uid://d1aori2vs4rlq" path="res://scenes/player/player.tscn" id="1_lvy3q"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tpahl"]
+b = Vector2(320, 0)
 
 [node name="main" type="Node2D"]
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 158)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+shape = SubResource("SegmentShape2D_tpahl")
+
+[node name="player" parent="." instance=ExtResource("1_lvy3q")]
+position = Vector2(154, 85)
