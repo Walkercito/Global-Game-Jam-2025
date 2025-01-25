@@ -42,4 +42,5 @@ animations = [{
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pe4ve")
+autoplay = "default"
 frame_progress = 0.32147

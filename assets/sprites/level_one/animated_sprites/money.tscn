@@ -56,4 +56,5 @@ animations = [{
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_js86r")
-frame_progress = 0.367699
+autoplay = "default"
+frame_progress = 0.535719
