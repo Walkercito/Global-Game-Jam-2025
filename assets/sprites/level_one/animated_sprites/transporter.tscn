@@ -35,11 +35,12 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="transporter" type="Node2D"]
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b2ptj")
-frame_progress = 0.12436
+autoplay = "default"
+frame_progress = 0.653446
