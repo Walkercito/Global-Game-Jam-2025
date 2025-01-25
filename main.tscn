@@ -2,21 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://37rcsg2u6paq" path="res://assets/demo/level/demo.tscn" id="1_ad2eu"]
 [ext_resource type="PackedScene" uid="uid://d1aori2vs4rlq" path="res://scenes/player/player.tscn" id="1_lvy3q"]
-[ext_resource type="PackedScene" uid="uid://bco8apc5dm7qq" path="res://scenes/objects/habilityArea/item.tscn" id="3_xdvqf"]
+[ext_resource type="PackedScene" uid="uid://bathqig87udh7" path="res://scenes/objects/skill_bubble.tscn" id="3_v6tve"]
 
 [node name="main" type="Node2D"]
 position = Vector2(-6, 6)
 
 [node name="Demo" parent="." instance=ExtResource("1_ad2eu")]
 
-[node name="player" parent="." instance=ExtResource("1_lvy3q")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("1_lvy3q")]
 light_mask = 9
 z_index = 3
 position = Vector2(161, 566)
 collision_layer = 3
 collision_mask = 13
 
-[node name="item" parent="." instance=ExtResource("3_xdvqf")]
-position = Vector2(249, 592)
+[node name="SkillBubble" parent="." instance=ExtResource("3_v6tve")]
+position = Vector2(251, 588)
 
 [editable path="Demo"]
