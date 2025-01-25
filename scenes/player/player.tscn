@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d1aori2vs4rlq"]
+[gd_scene load_steps=48 format=3 uid="uid://d1aori2vs4rlq"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_fv3hx"]
 [ext_resource type="Texture2D" uid="uid://b0myhi78bdi0t" path="res://assets/sprites/player/cat_fall_44x32.png" id="2_33q6f"]
@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b4v80ywi5tcdb" path="res://assets/sprites/player/cat_walk_44x32.png" id="2_yp3v1"]
 [ext_resource type="Texture2D" uid="uid://drfa01sw2tdl8" path="res://assets/sprites/player/cat_jump_44x32.png" id="4_0axqm"]
 [ext_resource type="PackedScene" uid="uid://dkkfh635loiam" path="res://scenes/skills/skills.tscn" id="4_3rqto"]
+[ext_resource type="Texture2D" uid="uid://ny7vs2p5gk7" path="res://assets/sprites/player/cat_run_44x32.png" id="5_6e6u5"]
 [ext_resource type="Texture2D" uid="uid://def6md3iyaavt" path="res://assets/sprites/player/cat_scratch_44x32.png" id="5_rjkbp"]
+[ext_resource type="Script" path="res://scripts/player/health_system.gd" id="9_6nuel"]
+[ext_resource type="Texture2D" uid="uid://owt0ugc7rqph" path="res://assets/sprites/heart/heart_full.png" id="10_5sq7y"]
+[ext_resource type="Texture2D" uid="uid://bl1el4mitayf2" path="res://assets/sprites/heart/heart_empty.png" id="11_ph4yw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_enw4u"]
 atlas = ExtResource("2_33q6f")
@@ -67,6 +71,30 @@ region = Rect2(220, 0, 44, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ldub"]
 atlas = ExtResource("4_0axqm")
 region = Rect2(264, 0, 44, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpk6y"]
+atlas = ExtResource("5_6e6u5")
+region = Rect2(0, 0, 44, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8din"]
+atlas = ExtResource("5_6e6u5")
+region = Rect2(44, 0, 44, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twx6r"]
+atlas = ExtResource("5_6e6u5")
+region = Rect2(88, 0, 44, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yefye"]
+atlas = ExtResource("5_6e6u5")
+region = Rect2(132, 0, 44, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rom7f"]
+atlas = ExtResource("5_6e6u5")
+region = Rect2(176, 0, 44, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv4nc"]
+atlas = ExtResource("5_6e6u5")
+region = Rect2(220, 0, 44, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47k6r"]
 atlas = ExtResource("5_rjkbp")
@@ -180,6 +208,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gpk6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8din")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twx6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yefye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rom7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv4nc")
+}],
+"loop": true,
+"name": &"run",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_47k6r")
 }, {
 "duration": 1.0,
@@ -239,7 +290,8 @@ script = ExtResource("1_fv3hx")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_lvp2v")
-animation = &"scratch"
+animation = &"run"
+frame_progress = 0.692822
 
 [node name="hurtBox" type="CollisionShape2D" parent="."]
 position = Vector2(3.13719e-06, -7.5)
@@ -264,3 +316,52 @@ offset_top = 12.0
 offset_right = -21.0
 offset_bottom = 12.0
 size_flags_horizontal = 4
+
+[node name="HealthSystem" type="Node2D" parent="."]
+position = Vector2(-147, -132)
+script = ExtResource("9_6nuel")
+
+[node name="Heart1" type="Node2D" parent="HealthSystem"]
+
+[node name="Full" type="Sprite2D" parent="HealthSystem/Heart1"]
+z_index = 2
+position = Vector2(-4, -1)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("10_5sq7y")
+
+[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart1"]
+visible = false
+z_index = 2
+position = Vector2(-4, -1)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_ph4yw")
+
+[node name="Heart2" type="Node2D" parent="HealthSystem"]
+
+[node name="Full" type="Sprite2D" parent="HealthSystem/Heart2"]
+z_index = 2
+position = Vector2(10, -1)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("10_5sq7y")
+
+[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart2"]
+visible = false
+z_index = 2
+position = Vector2(10, -1)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_ph4yw")
+
+[node name="Heart3" type="Node2D" parent="HealthSystem"]
+
+[node name="Full" type="Sprite2D" parent="HealthSystem/Heart3"]
+z_index = 2
+position = Vector2(24, -1)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("10_5sq7y")
+
+[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart3"]
+visible = false
+z_index = 2
+position = Vector2(24, -1)
+scale = Vector2(0.8125, 0.8125)
+texture = ExtResource("11_ph4yw")

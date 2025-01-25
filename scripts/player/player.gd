@@ -139,6 +139,6 @@ func update_animations() -> void:
 			animationController.play("fall")
 	else:
 		if abs(velocity.x) > 10:
-			animationController.play("walk" if current_speed == RUN_SPEED else "walk")
+			animationController.play("run" if current_speed == RUN_SPEED else "walk")
 		else:
 			animationController.play("idle")
