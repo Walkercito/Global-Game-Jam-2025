@@ -16,10 +16,14 @@ var can_air_dash = true
 var dash_direction = 1
 var has_double_jump = true  # Control del doble salto
 
+@onready var sprite = $AnimatedSprite2D
+
 func _physics_process(delta):
 	var was_on_floor = is_on_floor()
 	
-
+	# Manejo de animaciones
+	update_animations()
+	
 	if Input.is_action_just_pressed("dash") and (is_on_floor() or can_air_dash):
 		is_dashing = true
 		dash_time = DASH_DURATION
@@ -70,3 +74,16 @@ func _physics_process(delta):
 
 	if not was_on_floor and is_on_floor():
 		can_air_dash = true
+
+func update_animations():
+	# Voltear el sprite según la dirección
+	sprite.flip_h = not facing_right
+	
+	# Activar animación según el estado
+	if abs(velocity.x) > 0 and is_on_floor():
+		sprite.play("walk")
+	else:
+		if sprite.sprite_frames.has_animation("idle"):
+			sprite.play("idle")
+		else:
+			sprite.stop()  
