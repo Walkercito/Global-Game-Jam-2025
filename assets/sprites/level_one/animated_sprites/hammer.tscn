@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://cvpe3lr18y00r"]
+
+[ext_resource type="Texture2D" uid="uid://cj3uo47qrw58a" path="res://assets/sprites/level_one/4 Animated objects/Hammer.png" id="1_nmfjc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x32w3"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kfsj"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu3ub"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j137t"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbklv"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nukas"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pgov"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uetbk"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srril"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xibl"]
+atlas = ExtResource("1_nmfjc")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_45hq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x32w3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kfsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu3ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j137t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbklv")
+}],
+"loop": false,
+"name": &"down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nukas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pgov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uetbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srril")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xibl")
+}],
+"loop": false,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="hammer" type="Node2D"]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_45hq3")
+animation = &"up"
+frame = 4
+frame_progress = 1.0

@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckynfn56c02xe"]
+
+[ext_resource type="Texture2D" uid="uid://bi6d7aalb2qo2" path="res://assets/sprites/level_one/4 Animated objects/Chest.png" id="1_4uc1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0432"]
+atlas = ExtResource("1_4uc1p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v301t"]
+atlas = ExtResource("1_4uc1p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv2n6"]
+atlas = ExtResource("1_4uc1p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bak5"]
+atlas = ExtResource("1_4uc1p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3nsv"]
+atlas = ExtResource("1_4uc1p")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfvml"]
+atlas = ExtResource("1_4uc1p")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysxuk"]
+atlas = ExtResource("1_4uc1p")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq503"]
+atlas = ExtResource("1_4uc1p")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jp1o6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0432")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v301t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv2n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bak5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3nsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfvml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysxuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq503")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="chest" type="Node2D"]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jp1o6")
+frame_progress = 0.848677

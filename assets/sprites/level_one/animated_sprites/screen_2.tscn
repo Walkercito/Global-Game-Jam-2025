@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://buointyituuke"]
+
+[ext_resource type="Texture2D" uid="uid://c5o11qh2wstmb" path="res://assets/sprites/level_one/4 Animated objects/Screen2.png" id="1_wbv3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryujm"]
+atlas = ExtResource("1_wbv3c")
+region = Rect2(0, 0, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otjd6"]
+atlas = ExtResource("1_wbv3c")
+region = Rect2(32, 0, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcrdl"]
+atlas = ExtResource("1_wbv3c")
+region = Rect2(64, 0, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ijrd"]
+atlas = ExtResource("1_wbv3c")
+region = Rect2(96, 0, 32, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2e1e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryujm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otjd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcrdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ijrd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="screen2" type="Node2D"]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w2e1e")
+frame_progress = 0.544465
