@@ -46,6 +46,7 @@ func setup_collision_masks():
 func register_skill(skill_node: Node):
 	if not skill_node.is_in_group("skills"):
 		skill_node.add_to_group("skills")
+	print("Habilidad registrada: ", skill_node.name) # Debug
 	
 	# Verificar que la habilidad tenga los datos necesarios
 	if skill_node is BaseSkill:

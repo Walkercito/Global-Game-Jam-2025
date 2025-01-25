@@ -48,17 +48,20 @@ func _input(event):
 		_activate_skill(1)
 
 func equip_skill(skill_data: BaseSkill, slot: int) -> bool:
+	if not skill_data:
+		print("ERROR: Intentando equipar una habilidad nula") # Debug
+		return false
+		
 	if slot >= 0 and slot < equipped_skills.size():
-		# Si ya hay una habilidad en el slot, la soltamos
 		if equipped_skills[slot] != null:
 			_drop_skill(slot)
 		
-		# Equipamos la nueva habilidad
 		equipped_skills[slot] = skill_data
 		_update_ui()
 		print("Habilidad equipada en slot ", slot, ": ", skill_data.skill_name) # Debug
 		emit_signal("skill_equipped", skill_data)
 		return true
+		
 	print("ERROR: Slot inválido para equipar: ", slot) # Debug
 	return false
 
@@ -78,11 +81,18 @@ func _drop_skill(slot: int):
 
 func _try_pickup_skill():
 	var nearby_skills = get_tree().get_nodes_in_group("skill_bubbles")
+	print("Buscando burbujas cercanas. Encontradas: ", nearby_skills.size()) # Debug
+	
 	for skill_bubble in nearby_skills:
 		if skill_bubble.interaction_label.visible:
 			var skill_data = skill_bubble.get_skill_data()
-			if equip_skill(skill_data, current_slot):
-				skill_bubble.queue_free()
+			if skill_data:
+				print("Intentando equipar: ", skill_data.skill_name) # Debug
+				if equip_skill(skill_data, current_slot):
+					skill_bubble.queue_free()
+					return
+			else:
+				print("ERROR: skill_data es null") # Debug
 
 func _change_slot():
 	current_slot = (current_slot + 1) % equipped_skills.size()
