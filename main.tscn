@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://37rcsg2u6paq" path="res://assets/demo/level/demo.tscn" id="1_ad2eu"]
 [ext_resource type="PackedScene" uid="uid://d1aori2vs4rlq" path="res://scenes/player/player.tscn" id="1_lvy3q"]
-[ext_resource type="PackedScene" uid="uid://bco8apc5dm7qq" path="res://scenes/objects/test_item/item.tscn" id="3_xdvqf"]
+[ext_resource type="PackedScene" uid="uid://bco8apc5dm7qq" path="res://scenes/objects/habilityArea/item.tscn" id="3_xdvqf"]
 
 [node name="main" type="Node2D"]
 position = Vector2(-6, 6)

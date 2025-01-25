@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bco8apc5dm7qq"]
+[gd_scene load_steps=3 format=3 uid="uid://bco8apc5dm7qq"]
 
 [ext_resource type="Script" path="res://scripts/objects/item_test/area.gd" id="1_arl85"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ud5c6"]
 radius = 18.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_nmik8"]
 
 [node name="item" type="Node2D"]
 light_mask = 8
@@ -21,10 +19,6 @@ script = ExtResource("1_arl85")
 [node name="collision" type="CollisionShape2D" parent="area"]
 shape = SubResource("CircleShape2D_ud5c6")
 debug_color = Color(6.73831e-07, 0.644261, 0.284401, 0.42)
-
-[node name="mesh" type="MeshInstance2D" parent="."]
-scale = Vector2(5, 5)
-mesh = SubResource("QuadMesh_nmik8")
 
 [node name="Label" type="Label" parent="."]
 visible = false
