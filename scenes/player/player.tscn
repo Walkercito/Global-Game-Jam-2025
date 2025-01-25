@@ -191,7 +191,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t5m6q")
 }],
-"loop": true,
+"loop": false,
 "name": &"scratch",
 "speed": 8.0
 }, {
@@ -239,7 +239,7 @@ script = ExtResource("1_fv3hx")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_lvp2v")
-animation = &"idle"
+animation = &"scratch"
 
 [node name="hurtBox" type="CollisionShape2D" parent="."]
 position = Vector2(3.13719e-06, -7.5)
