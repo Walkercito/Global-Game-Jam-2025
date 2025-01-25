@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgkygqec0jn2"]
+
+[ext_resource type="Texture2D" uid="uid://cubioht7c5sxi" path="res://assets/sprites/level_one/4 Animated objects/Money.png" id="1_7v6ae"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eni57"]
+atlas = ExtResource("1_7v6ae")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4jm4"]
+atlas = ExtResource("1_7v6ae")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn8td"]
+atlas = ExtResource("1_7v6ae")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj7rs"]
+atlas = ExtResource("1_7v6ae")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghmga"]
+atlas = ExtResource("1_7v6ae")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebcp4"]
+atlas = ExtResource("1_7v6ae")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_js86r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eni57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4jm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn8td")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj7rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghmga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebcp4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="money" type="Node2D"]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_js86r")
+frame_progress = 0.367699

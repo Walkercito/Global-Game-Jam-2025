@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvnsnrwvhfbr0"]
+[gd_scene load_steps=4 format=3 uid="uid://cvnsnrwvhfbr0"]
 
 [ext_resource type="PackedScene" uid="uid://37rcsg2u6paq" path="res://assets/demo/level/demo.tscn" id="1_ad2eu"]
 [ext_resource type="PackedScene" uid="uid://d1aori2vs4rlq" path="res://scenes/player/player.tscn" id="1_lvy3q"]
+[ext_resource type="PackedScene" uid="uid://bco8apc5dm7qq" path="res://scenes/objects/test_item/item.tscn" id="3_xdvqf"]
 
 [node name="main" type="Node2D"]
 position = Vector2(-6, 6)
@@ -12,7 +13,10 @@ position = Vector2(-6, 6)
 light_mask = 9
 z_index = 3
 position = Vector2(161, 566)
-collision_layer = 1
-collision_mask = 1
+collision_layer = 3
+collision_mask = 13
+
+[node name="item" parent="." instance=ExtResource("3_xdvqf")]
+position = Vector2(249, 592)
 
 [editable path="Demo"]

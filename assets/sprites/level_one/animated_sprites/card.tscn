@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://nryunqmj7rfj"]
+
+[ext_resource type="Texture2D" uid="uid://p148upqfasfx" path="res://assets/sprites/level_one/4 Animated objects/Card.png" id="1_amhce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo1h5"]
+atlas = ExtResource("1_amhce")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7e2m"]
+atlas = ExtResource("1_amhce")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k4b2"]
+atlas = ExtResource("1_amhce")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aefl"]
+atlas = ExtResource("1_amhce")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g77kp"]
+atlas = ExtResource("1_amhce")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu0up"]
+atlas = ExtResource("1_amhce")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jvs2"]
+atlas = ExtResource("1_amhce")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpg5u"]
+atlas = ExtResource("1_amhce")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gaft1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo1h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7e2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k4b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aefl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g77kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu0up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jvs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpg5u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="card" type="Node2D"]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gaft1")
+frame_progress = 0.779258

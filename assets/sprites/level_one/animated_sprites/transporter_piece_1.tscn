@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://o2htx8mxs8vq"]
+
+[ext_resource type="Texture2D" uid="uid://bmvutvax128nv" path="res://assets/sprites/level_one/4 Animated objects/Transporter1.png" id="1_0n5f6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxl6s"]
+atlas = ExtResource("1_0n5f6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddk83"]
+atlas = ExtResource("1_0n5f6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwih7"]
+atlas = ExtResource("1_0n5f6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmos3"]
+atlas = ExtResource("1_0n5f6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kgfc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxl6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddk83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwih7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmos3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="transporter_piece_1" type="Node2D"]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kgfc8")
+frame_progress = 0.202965
