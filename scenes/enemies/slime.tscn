@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://kk5fpxyvmqyv"]
+
+[ext_resource type="Texture2D" uid="uid://0h24jtgekht5" path="res://assets/sprites/slime/slime_death.png" id="1_5nvcq"]
+[ext_resource type="Texture2D" uid="uid://6c5nymxpfbxd" path="res://assets/sprites/slime/slime_idle.png" id="2_7mijb"]
+[ext_resource type="Texture2D" uid="uid://db71u40hm68k6" path="res://assets/sprites/slime/slime_jump.png" id="3_3ou4w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsqtd"]
+atlas = ExtResource("1_5nvcq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10ist"]
+atlas = ExtResource("1_5nvcq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7n70"]
+atlas = ExtResource("1_5nvcq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4nde"]
+atlas = ExtResource("2_7mijb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bogn1"]
+atlas = ExtResource("2_7mijb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7u8b"]
+atlas = ExtResource("2_7mijb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csci8"]
+atlas = ExtResource("2_7mijb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3xkn"]
+atlas = ExtResource("3_3ou4w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80n1r"]
+atlas = ExtResource("3_3ou4w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7ldp"]
+atlas = ExtResource("3_3ou4w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aenag"]
+atlas = ExtResource("3_3ou4w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owrjy"]
+atlas = ExtResource("3_3ou4w")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f3cy"]
+atlas = ExtResource("3_3ou4w")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojtee"]
+atlas = ExtResource("3_3ou4w")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vrdv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsqtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10ist")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7n70")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4nde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bogn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7u8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csci8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3xkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80n1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7ldp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aenag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owrjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f3cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojtee")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mmgwy"]
+radius = 8.0
+height = 26.0
+
+[node name="Slime" type="CharacterBody2D"]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_8vrdv")
+animation = &"jump"
+
+[node name="hurtBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mmgwy")
+
+[node name="hitBox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mmgwy")
+debug_color = Color(0.988235, 0, 0, 0.419608)
