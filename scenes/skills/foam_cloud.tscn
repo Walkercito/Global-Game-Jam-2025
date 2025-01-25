@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyuean3ohwjrq"]
+
+[ext_resource type="PackedScene" uid="uid://c51g53khyubbl" path="res://scenes/objects/base_skills.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/skills/foam_cloud.gd" id="2_foam"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 45.0
+
+[node name="FoamCloud" instance=ExtResource("1_base")]
+script = ExtResource("2_foam")
+push_force = 300.0
+cloud_radius = 150.0
+cloud_duration = 2.0
+splash_damage = 5.0
+push_duration = 0.5
+
+[node name="SkillParticles" parent="." index="1"]
+amount = 50
+lifetime = 2.0
+speed_scale = 0.5
+explosiveness = 0.2
+randomness = 0.5
+
+[node name="EffectArea" parent="." index="3"]
+collision_layer = 16
+collision_mask = 320
+
+[node name="CollisionShape2D" parent="EffectArea" index="0"]
+shape = SubResource("CircleShape2D_1")
