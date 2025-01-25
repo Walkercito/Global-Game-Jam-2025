@@ -1,8 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://kk5fpxyvmqyv"]
+[gd_scene load_steps=21 format=3 uid="uid://kk5fpxyvmqyv"]
 
 [ext_resource type="Texture2D" uid="uid://0h24jtgekht5" path="res://assets/sprites/slime/slime_death.png" id="1_5nvcq"]
 [ext_resource type="Texture2D" uid="uid://6c5nymxpfbxd" path="res://assets/sprites/slime/slime_idle.png" id="2_7mijb"]
 [ext_resource type="Texture2D" uid="uid://db71u40hm68k6" path="res://assets/sprites/slime/slime_jump.png" id="3_3ou4w"]
+
+[sub_resource type="GDScript" id="GDScript_xyxy0"]
+script/source = "extends CharacterBody2D
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsqtd"]
 atlas = ExtResource("1_5nvcq")
@@ -128,6 +132,7 @@ radius = 8.0
 height = 26.0
 
 [node name="Slime" type="CharacterBody2D"]
+script = SubResource("GDScript_xyxy0")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)

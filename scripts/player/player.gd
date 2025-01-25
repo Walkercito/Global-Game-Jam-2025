@@ -25,6 +25,7 @@ var is_scratching: bool = false
 @onready var animationController = $sprite
 @onready var scratch_hitbox = $scratch_hitbox
 @onready var scratch_cooldown = $scratch_cooldown
+@onready var skills_manager = $Skills
 
 func _ready():
 	# Configurar el timer de cooldown
@@ -36,6 +37,7 @@ func _ready():
 	
 	# Conectar la señal de animación terminada
 	animationController.animation_finished.connect(_on_animation_finished)
+	print("Sistema de jugador inicializado") # Debug
 
 func _physics_process(delta):
 	var was_on_floor = is_on_floor()
@@ -142,3 +144,23 @@ func update_animations() -> void:
 			animationController.play("run" if current_speed == RUN_SPEED else "walk")
 		else:
 			animationController.play("idle")
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skill_1"):
+		skills_manager._activate_skill(0)
+	elif event.is_action_pressed("skill_2"):
+		skills_manager._activate_skill(1)
+
+# Manejadores de señales de habilidades (usando el formato correcto de Godot)
+func _on_skills_skill_activated(skill: BaseSkill) -> void:
+	if skill:
+		skill.activate(self)
+		print("Habilidad activada: ", skill.skill_name) # Debug
+
+func _on_skills_skill_equipped(skill: BaseSkill) -> void:
+	print("Habilidad equipada: ", skill.skill_name) # Debug
+	# Aquí puedes agregar efectos visuales o sonidos cuando se equipa una habilidad
+
+func _on_skills_skill_dropped(skill: BaseSkill) -> void:
+	print("Habilidad soltada: ", skill.skill_name) # Debug
+	# Aquí puedes agregar efectos visuales o sonidos cuando se suelta una habilidad

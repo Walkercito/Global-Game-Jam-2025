@@ -1,7 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpg2i47svkc3t"]
+[gd_scene load_steps=12 format=3 uid="uid://bpg2i47svkc3t"]
 
 [ext_resource type="Texture2D" uid="uid://wsic3poxtvlb" path="res://assets/sprites/bird/bird_attack.png" id="1_rk5vf"]
 [ext_resource type="Texture2D" uid="uid://o5xih3wtmtoi" path="res://assets/sprites/bird/bird_idle.png" id="2_eek08"]
+
+[sub_resource type="GDScript" id="GDScript_082yy"]
+script/source = "extends CharacterBody2D
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llupr"]
 atlas = ExtResource("1_rk5vf")
@@ -62,6 +66,7 @@ animations = [{
 radius = 11.0
 
 [node name="Bird" type="CharacterBody2D"]
+script = SubResource("GDScript_082yy")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qoeaj")
