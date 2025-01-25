@@ -1,6 +1,8 @@
 extends Control
 
 signal skill_activated(skill_index: int)
+signal try_pickup_skill(slot: int)
+signal skill_dropped(skill_data, slot: int)
 
 var equipped_skills = [null, null]  # Solo las dos habilidades equipadas
 var current_slot = 0  # Slot seleccionado actualmente (0 o 1)
@@ -18,6 +20,12 @@ func _ready():
 		event.keycode = KEY_R
 		InputMap.action_add_event("drop_skill", event)
 	
+	if not InputMap.has_action("change_slot"):
+		InputMap.add_action("change_slot")
+		var event = InputEventKey.new()
+		event.keycode = KEY_TAB
+		InputMap.action_add_event("change_slot", event)
+	
 	# Inicializar UI
 	_update_ui()
 
@@ -26,11 +34,11 @@ func _input(event):
 		emit_signal("try_pickup_skill", current_slot)
 	elif event.is_action_pressed("drop_skill"): # R
 		_drop_current_skill()
+	elif event.is_action_pressed("change_slot"): # TAB
+		_change_slot()
 	elif event.is_action_pressed("skill_1"): # Q
-		current_slot = 0
 		_activate_skill(0)
 	elif event.is_action_pressed("skill_2"): # E
-		current_slot = 1
 		_activate_skill(1)
 
 func equip_skill(skill_data, slot: int):
@@ -58,6 +66,10 @@ func _drop_skill(slot: int):
 func _activate_skill(index: int):
 	if equipped_skills[index] != null:
 		emit_signal("skill_activated", index)
+
+func _change_slot():
+	current_slot = (current_slot + 1) % equipped_skills.size()
+	_update_ui()
 
 func _update_ui():
 	# Actualizar la interfaz visual

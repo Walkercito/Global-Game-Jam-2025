@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" uid="uid://c51g53khyubbl" path="res://scenes/objects/base_skills.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/skills/bubble_burst.gd" id="2_burst"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 8.0
+
+[node name="BubbleBurst" instance=ExtResource("1_base")]
+script = ExtResource("2_burst")
+bubble_count = 8
+spread_angle = 45.0
+bubble_speed = 300.0
+bubble_damage = 8.0
+push_force = 150.0
+charge_time = 1.0
+charge_damage_multiplier = 2.5
+
+[node name="SkillParticles" parent="." index="1"]
+amount = 50
+lifetime = 0.5
+explosiveness = 0.3
+randomness = 0.4
+
+[node name="EffectArea" parent="." index="3"]
+collision_layer = 16
+collision_mask = 64
+
+[node name="CollisionShape2D" parent="EffectArea" index="0"]
+shape = SubResource("CircleShape2D_1") 

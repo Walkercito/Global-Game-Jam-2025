@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" uid="uid://c51g53khyubbl" path="res://scenes/objects/base_skills.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/skills/spy_bubble.gd" id="2_spy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 15.0
+
+[node name="SpyBubble" instance=ExtResource("1_base")]
+script = ExtResource("2_spy")
+projectile_speed = 350.0
+tracking_radius = 200.0
+lift_height = 150.0
+lift_duration = 2.0
+fall_damage = 25.0
+explosion_radius = 80.0
+pierce_count = 2
+
+[node name="SkillParticles" parent="." index="1"]
+amount = 30
+lifetime = 0.6
+explosiveness = 0.4
+randomness = 0.3
+
+[node name="EffectArea" parent="." index="3"]
+collision_layer = 16
+collision_mask = 64
+
+[node name="CollisionShape2D" parent="EffectArea" index="0"]
+shape = SubResource("CircleShape2D_1") 
