@@ -2003,7 +2003,7 @@ position = Vector2(2333, -133)
 [node name="entity" type="Node2D" parent="."]
 
 [node name="player" parent="entity" instance=ExtResource("138_ybfbh")]
-position = Vector2(109, 172)
+position = Vector2(4923, -133)
 collision_layer = 3
 collision_mask = 12
 
