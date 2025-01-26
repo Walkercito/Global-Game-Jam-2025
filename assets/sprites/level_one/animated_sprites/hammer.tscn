@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvpe3lr18y00r"]
+[gd_scene load_steps=14 format=3 uid="uid://cvpe3lr18y00r"]
 
 [ext_resource type="Texture2D" uid="uid://cj3uo47qrw58a" path="res://assets/sprites/level_one/4 Animated objects/Hammer.png" id="1_nmfjc"]
 
@@ -85,10 +85,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="hammer" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6fc5"]
+size = Vector2(32, 22)
+
+[node name="hammer" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 202
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_45hq3")
 animation = &"up"
 frame = 4
 frame_progress = 1.0
+
+[node name="collission" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_l6fc5")
+debug_color = Color(0.991327, 0, 0.267009, 0.42)

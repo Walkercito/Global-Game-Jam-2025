@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://owt0ugc7rqph" path="res://assets/sprites/heart/heart_full.png" id="10_5sq7y"]
 [ext_resource type="Texture2D" uid="uid://bl1el4mitayf2" path="res://assets/sprites/heart/heart_empty.png" id="11_ph4yw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmjnx"]
+size = Vector2(15, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_enw4u"]
 atlas = ExtResource("2_33q6f")
 region = Rect2(0, 0, 44, 32)
@@ -276,16 +279,22 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmjnx"]
-size = Vector2(15, 20)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_mx20x"]
 radius = 4.0
 
 [node name="player" type="CharacterBody2D"]
+z_index = 90
 collision_layer = 2
-collision_mask = 4
+collision_mask = 260
 script = ExtResource("1_fv3hx")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 256
+position = Vector2(3.13719e-06, -7.5)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_jmjnx")
+debug_color = Color(0.761434, 0.212628, 0.966981, 0.42)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
@@ -293,79 +302,94 @@ sprite_frames = SubResource("SpriteFrames_lvp2v")
 animation = &"run"
 frame_progress = 0.692822
 
-[node name="hurtBox" type="CollisionShape2D" parent="."]
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(0, -50)
+position_smoothing_speed = 2.0
+
+[node name="hurtBox" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 32
+
+[node name="hurtBox" type="CollisionShape2D" parent="hurtBox"]
+light_mask = 2
+visibility_layer = 256
 position = Vector2(3.13719e-06, -7.5)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_jmjnx")
 debug_color = Color(0.761434, 0.212628, 0.966981, 0.42)
 
-[node name="hitBox" type="CollisionShape2D" parent="."]
+[node name="hitBox2" type="Area2D" parent="."]
 visible = false
+collision_mask = 64
+
+[node name="hitBox" type="CollisionShape2D" parent="hitBox2"]
 visibility_layer = 8
 position = Vector2(17, -10)
 shape = SubResource("CircleShape2D_mx20x")
 debug_color = Color(0.965902, 0, 0.48385, 0.42)
 
-[node name="camera" type="Camera2D" parent="."]
-position = Vector2(0, -50)
-position_smoothing_speed = 2.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(160, 140)
+transform = Transform2D(1, 0, 0, 1, 160, 140)
 
-[node name="Skills" parent="." instance=ExtResource("4_3rqto")]
-offset_left = -21.0
-offset_top = 12.0
-offset_right = -21.0
-offset_bottom = 12.0
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_3rqto")]
+offset_left = -181.0
+offset_top = -168.0
+offset_right = -181.0
+offset_bottom = -168.0
 size_flags_horizontal = 4
 
-[node name="HealthSystem" type="Node2D" parent="."]
+[node name="HealthSystem" type="Node2D" parent="CanvasLayer"]
 position = Vector2(-147, -132)
 script = ExtResource("9_6nuel")
 
-[node name="Heart1" type="Node2D" parent="HealthSystem"]
+[node name="Heart1" type="Node2D" parent="CanvasLayer/HealthSystem"]
 
-[node name="Full" type="Sprite2D" parent="HealthSystem/Heart1"]
+[node name="Full" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart1"]
 z_index = 2
 position = Vector2(-4, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("10_5sq7y")
 
-[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart1"]
+[node name="Empty" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart1"]
 visible = false
 z_index = 2
 position = Vector2(-4, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("11_ph4yw")
 
-[node name="Heart2" type="Node2D" parent="HealthSystem"]
+[node name="Heart2" type="Node2D" parent="CanvasLayer/HealthSystem"]
 
-[node name="Full" type="Sprite2D" parent="HealthSystem/Heart2"]
+[node name="Full" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart2"]
 z_index = 2
 position = Vector2(10, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("10_5sq7y")
 
-[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart2"]
+[node name="Empty" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart2"]
 visible = false
 z_index = 2
 position = Vector2(10, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("11_ph4yw")
 
-[node name="Heart3" type="Node2D" parent="HealthSystem"]
+[node name="Heart3" type="Node2D" parent="CanvasLayer/HealthSystem"]
 
-[node name="Full" type="Sprite2D" parent="HealthSystem/Heart3"]
+[node name="Full" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart3"]
 z_index = 2
 position = Vector2(24, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("10_5sq7y")
 
-[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart3"]
+[node name="Empty" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart3"]
 visible = false
 z_index = 2
 position = Vector2(24, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("11_ph4yw")
 
-[connection signal="skill_activated" from="Skills" to="." method="_on_skills_skill_activated"]
-[connection signal="skill_dropped" from="Skills" to="." method="_on_skills_skill_dropped"]
-[connection signal="skill_equipped" from="Skills" to="." method="_on_skills_skill_equipped"]
+[connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="skill_activated" from="CanvasLayer/UI" to="." method="_on_skills_skill_activated"]
+[connection signal="skill_dropped" from="CanvasLayer/UI" to="." method="_on_skills_skill_dropped"]
+[connection signal="skill_equipped" from="CanvasLayer/UI" to="." method="_on_skills_skill_equipped"]

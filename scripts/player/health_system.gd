@@ -31,14 +31,11 @@ func heal(amount: int = 1) -> void:
 	emit_signal("health_changed", current_health)
 
 func update_hearts_display() -> void:
-	# Primer corazón
 	heart1_full.visible = current_health >= 1
 	heart1_empty.visible = current_health < 1
 	
-	# Segundo corazón
 	heart2_full.visible = current_health >= 2
 	heart2_empty.visible = current_health < 2
 	
-	# Tercer corazón
 	heart3_full.visible = current_health >= 3
 	heart3_empty.visible = current_health < 3

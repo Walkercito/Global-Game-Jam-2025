@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://o2htx8mxs8vq"]
+[gd_scene load_steps=8 format=3 uid="uid://o2htx8mxs8vq"]
 
 [ext_resource type="Texture2D" uid="uid://bmvutvax128nv" path="res://assets/sprites/level_one/4 Animated objects/Transporter1.png" id="1_0n5f6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_767b1"]
+size = Vector2(32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxl6s"]
 atlas = ExtResource("1_0n5f6")
@@ -34,12 +37,31 @@ animations = [{
 "texture": SubResource("AtlasTexture_nmos3")
 }],
 "loop": true,
-"name": &"default",
+"name": &"play",
 "speed": 8.0
 }]
 
-[node name="transporter_piece_1" type="Node2D"]
+[node name="transporter_piece_1" type="StaticBody2D"]
+collision_layer = 256
+collision_mask = 202
+
+[node name="animatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 202
+collision_mask = 256
+constant_linear_velocity = Vector2(50, 0)
+
+[node name="collision" type="CollisionShape2D" parent="animatableBody2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_767b1")
+debug_color = Color(0.917647, 0.752941, 0, 0.419608)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kgfc8")
-frame_progress = 0.202965
+animation = &"play"
+autoplay = "play"
+frame_progress = 0.309432
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_767b1")
+debug_color = Color(0.918813, 0.752267, 0, 0.419608)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://buointyituuke"]
+[gd_scene load_steps=10 format=3 uid="uid://buointyituuke"]
 
 [ext_resource type="Texture2D" uid="uid://c5o11qh2wstmb" path="res://assets/sprites/level_one/4 Animated objects/Screen2.png" id="1_wbv3c"]
+[ext_resource type="Texture2D" uid="uid://iv2ygcbahd24" path="res://assets/sprites/speech.png" id="2_k2j0y"]
+[ext_resource type="Script" path="res://assets/sprites/level_one/animated_sprites/buuble.gd" id="3_0mlj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryujm"]
 atlas = ExtResource("1_wbv3c")
@@ -38,9 +40,31 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdn4a"]
+radius = 51.0098
+
 [node name="screen2" type="Node2D"]
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w2e1e")
 autoplay = "default"
 frame_progress = 0.804257
+
+[node name="buuble" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -25)
+texture = ExtResource("2_k2j0y")
+hframes = 5
+vframes = 4
+frame = 5
+script = ExtResource("3_0mlj0")
+
+[node name="area" type="Area2D" parent="."]
+position = Vector2(8, 0)
+
+[node name="collision" type="CollisionShape2D" parent="area"]
+shape = SubResource("CircleShape2D_jdn4a")
+debug_color = Color(0, 0.647739, 0.202464, 0.42)
+
+[connection signal="body_entered" from="area" to="buuble" method="_on_area_body_entered"]
+[connection signal="body_exited" from="area" to="buuble" method="_on_area_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://yleylvnrmt50"]
+[gd_scene load_steps=14 format=3 uid="uid://yleylvnrmt50"]
 
 [ext_resource type="Texture2D" uid="uid://dku7hq7rvktny" path="res://assets/sprites/level_one/4 Animated objects/Entry.png" id="1_t08xk"]
 
@@ -82,8 +82,11 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 5.0
+"speed": 8.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yklyf"]
+size = Vector2(45, 64)
 
 [node name="entry" type="Node2D"]
 
@@ -92,3 +95,20 @@ sprite_frames = SubResource("SpriteFrames_ph407")
 animation = &"close"
 frame = 4
 frame_progress = 1.0
+
+[node name="open-close" type="Area2D" parent="."]
+
+[node name="collison" type="CollisionShape2D" parent="open-close"]
+position = Vector2(-12.5, 0)
+shape = SubResource("RectangleShape2D_yklyf")
+debug_color = Color(2.52686e-06, 0.648743, 0.170383, 0.42)
+
+[node name="col" type="StaticBody2D" parent="."]
+position = Vector2(0, 91)
+collision_layer = 458
+collision_mask = 256
+
+[node name="collison" type="CollisionShape2D" parent="col"]
+position = Vector2(-6, 0)
+shape = SubResource("RectangleShape2D_yklyf")
+debug_color = Color(2.52686e-06, 0.648743, 0.170383, 0.42)
