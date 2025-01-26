@@ -16,6 +16,8 @@ func _ready():
 	super._ready()
 	add_to_group("skills")
 	
+	skill_icon = preload("res://assets/sprites/skills/skills_soap.png")
+	
 	# Configurar valores base de la habilidad
 	skill_name = "Bomba de Jabón Ácido"
 	description = "Lanza una bomba que se adhiere y explota, dejando un charco ácido"
