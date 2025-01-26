@@ -23,7 +23,7 @@ var can_scratch: bool = true
 var is_scratching: bool = false
 
 @onready var animationController = $sprite
-@onready var skills_manager = $Skills
+@onready var skills_manager = $UI
 @onready var camera = $camera
 
 @onready var camera_tween: Tween
@@ -31,7 +31,23 @@ var is_scratching: bool = false
 
 func _ready():
 	animationController.animation_finished.connect(_on_animation_finished)
-	print("Sistema de jugador inicializado") # Debug
+	add_to_group("player")  # Importante para que la burbuja lo detecte
+	
+	# Conectar con todas las burbujas existentes
+	for bubble in get_tree().get_nodes_in_group("skill_bubbles"):
+		bubble.connect("skill_picked", _on_skill_bubble_picked)
+	
+	# Conectar con burbujas que se creen después
+	get_tree().connect("node_added", _on_node_added)
+
+func _on_node_added(node: Node) -> void:
+	if node.is_in_group("skill_bubbles"):
+		node.connect("skill_picked", _on_skill_bubble_picked)
+
+func _on_skill_bubble_picked(skill: BaseSkill) -> void:
+	if skills_manager:
+		skills_manager.equip_skill(skill)
+		print("Habilidad recogida: ", skill.skill_name)
 
 func _physics_process(delta):
 	var was_on_floor = is_on_floor()
@@ -116,6 +132,10 @@ func update_animations() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if not skills_manager:
+		push_error("Error: No se encontró el gestor de habilidades")
+		return
+		
 	if event.is_action_pressed("skill_1"):
 		skills_manager._activate_skill(0)
 	elif event.is_action_pressed("skill_2"):
@@ -123,9 +143,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_skills_skill_activated(skill: BaseSkill) -> void:
-	if skill:
+	if skill and not is_dashing and not is_scratching:
 		skill.activate(self)
-		print("Habilidad activada: ", skill.skill_name) # Debug
+		print("Habilidad activada: ", skill.skill_name)
 
 func _on_skills_skill_equipped(skill: BaseSkill) -> void:
 	print("Habilidad equipada: ", skill.skill_name) # Debug

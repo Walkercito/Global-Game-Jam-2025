@@ -1,35 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0lybwtvijtd7"]
+[gd_scene load_steps=5 format=3 uid="uid://dsp0xwgixlmhl"]
 
-[ext_resource type="PackedScene" uid="uid://c51g53khyubbl" path="res://scenes/objects/base_skills.tscn" id="1_base"]
-[ext_resource type="Script" path="res://scripts/skills/acid_bomb.gd" id="2_acid"]
-[ext_resource type="Texture2D" uid="uid://dxvtedj1f7pjs" path="res://assets/sprites/skills/skills_soap.png" id="3_egk47"]
+[ext_resource type="Texture2D" uid="uid://d3f3oht8puvnc" path="res://assets/sprites/bubbles/bubbles 2.png" id="1_sfd30"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hlycs"]
+radius = 7.0
 
-[node name="AcidBomb" instance=ExtResource("1_base")]
-script = ExtResource("2_acid")
-stick_duration = 3.0
-explosion_radius = 100.0
-initial_damage = 15.0
-explosion_damage = 30.0
-acid_pool_duration = 4.0
-acid_damage_per_second = 10.0
-projectile_speed = 400.0
-skill_name = "Bomba de Jabón Ácido"
-description = "Lanza una bomba que se adhiere y explota, dejando un charco ácido"
-skill_type = "offensive"
-cooldown = 6.0
-skill_icon = ExtResource("3_egk47")
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1arg"]
+atlas = ExtResource("1_sfd30")
+region = Rect2(0, 0, 16, 16)
 
-[node name="SkillParticles" parent="." index="1"]
-amount = 40
-lifetime = 0.8
-explosiveness = 0.8
-randomness = 0.3
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2exq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1arg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="EffectArea" parent="." index="3"]
+[node name="AcidBomb" type="Area2D"]
 collision_layer = 16
-collision_mask = 64
 
-[node name="CollisionShape2D" parent="EffectArea" index="0"]
-shape = SubResource("CircleShape2D_1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hlycs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d2exq")
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+local_coords = true
+direction = Vector2(-1, 0)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color = Color(0.87451, 0.443137, 0.14902, 0.7)

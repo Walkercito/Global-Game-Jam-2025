@@ -1,35 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyuean3ohwjrq"]
+[gd_scene load_steps=2 format=3 uid="uid://ddaclmfsv1qc"]
 
-[ext_resource type="PackedScene" uid="uid://c51g53khyubbl" path="res://scenes/objects/base_skills.tscn" id="1_base"]
-[ext_resource type="Script" path="res://scripts/skills/foam_cloud.gd" id="2_foam"]
-[ext_resource type="Texture2D" uid="uid://bhw2v3x8uotgg" path="res://assets/sprites/skills/bubble_cloud.png" id="3_223pu"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e3uni"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
-radius = 45.0
+[node name="FoamCloud" type="Area2D"]
 
-[node name="FoamCloud" instance=ExtResource("1_base")]
-script = ExtResource("2_foam")
-push_force = 300.0
-cloud_radius = 150.0
-cloud_duration = 2.0
-splash_damage = 5.0
-push_duration = 0.5
-skill_name = "Nube de Espuma"
-description = "Crea una nube que empuja enemigos y cancela proyectiles"
-skill_type = "defensive"
-cooldown = 5.0
-skill_icon = ExtResource("3_223pu")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(30, 30)
+shape = SubResource("CircleShape2D_e3uni")
 
-[node name="SkillParticles" parent="." index="1"]
-amount = 50
-lifetime = 2.0
-speed_scale = 0.5
-explosiveness = 0.2
-randomness = 0.5
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 
-[node name="EffectArea" parent="." index="3"]
-collision_layer = 16
-collision_mask = 320
-
-[node name="CollisionShape2D" parent="EffectArea" index="0"]
-shape = SubResource("CircleShape2D_1")
+[node name="DurationTimer" type="Timer" parent="."]
+wait_time = 3.0

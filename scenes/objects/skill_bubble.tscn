@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/objects/skill_bubble.gd" id="1_bubble"]
 [ext_resource type="Texture2D" uid="uid://de25qora4y6e6" path="res://assets/sprites/bubbles/bubbles 1.png" id="2_knete"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
-radius = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qnjn"]
+radius = 35.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h36rq"]
 atlas = ExtResource("2_knete")
@@ -26,10 +26,9 @@ script = ExtResource("1_bubble")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_1")
+shape = SubResource("CircleShape2D_7qnjn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

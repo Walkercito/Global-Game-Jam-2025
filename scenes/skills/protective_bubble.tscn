@@ -1,26 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwahyney6eet"]
+[gd_scene load_steps=3 format=3 uid="uid://du3mbpje20qk2"]
 
-[ext_resource type="PackedScene" uid="uid://c51g53khyubbl" path="res://scenes/objects/base_skills.tscn" id="1_base"]
-[ext_resource type="Script" path="res://scripts/skills/protective_bubble.gd" id="2_bubble"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_j02rl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
-radius = 35.0143
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bjqh"]
 
-[node name="ProtectiveBubble" instance=ExtResource("1_base")]
-script = ExtResource("2_bubble")
-shield_duration = 3.0
-shield_health = 1
-explosion_radius = 100.0
-explosion_damage = 20.0
+[node name="ProtectiveBubble" type="Area2D"]
 
-[node name="SkillParticles" parent="." index="1"]
-amount = 30
-explosiveness = 0.3
-randomness = 0.2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_j02rl")
 
-[node name="EffectArea" parent="." index="3"]
-collision_layer = 16
-collision_mask = 320
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7bjqh")
 
-[node name="CollisionShape2D" parent="EffectArea" index="0"]
-shape = SubResource("CircleShape2D_1")
+[node name="DurationTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]

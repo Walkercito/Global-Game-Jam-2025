@@ -1,29 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm55defdg04dm"]
+[gd_scene load_steps=2 format=3 uid="uid://dy7mc5vogvbgy"]
 
-[ext_resource type="PackedScene" uid="uid://c51g53khyubbl" path="res://scenes/objects/base_skills.tscn" id="1_base"]
-[ext_resource type="Script" path="res://scripts/skills/bubble_shield.gd" id="2_bubble"]
-[ext_resource type="Texture2D" uid="uid://6ie78ii0vx2n" path="res://assets/sprites/skills/skills_bubble_shield.png" id="3_icon"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_uj65j"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bcehr"]
-radius = 23.0868
+[node name="BubbleShield" type="Node2D"]
 
-[node name="BubbleShield" instance=ExtResource("1_base")]
-script = ExtResource("2_bubble")
-shield_duration = 4.0
-damage_reduction = 0.5
-slow_factor = 0.3
-shield_radius = 120.0
-skill_name = "Escudo de Burbujas"
-description = "Crea un campo de burbujas que reduce el daño y ralentiza enemigos"
-skill_type = "defensive"
-cooldown = 10.0
-skill_icon = ExtResource("3_icon")
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="SkillParticles" parent="." index="1"]
-amount = 30
-lifetime = 0.8
-explosiveness = 0.3
-randomness = 0.2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(25, 25)
+shape = SubResource("CircleShape2D_uj65j")
 
-[node name="CollisionShape2D" parent="EffectArea" index="0"]
-shape = SubResource("CircleShape2D_bcehr")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+
+[node name="DurationTimer" type="Timer" parent="."]

@@ -103,11 +103,11 @@ func _change_slot():
 
 func _activate_skill(slot: int):
 	if slot >= 0 and slot < equipped_skills.size():
-		if equipped_skills[slot] != null:
-			print("Activando habilidad en slot ", slot, ": ", equipped_skills[slot].skill_name) # Debug
+		if equipped_skills[slot] != null and equipped_skills[slot].is_ready:
+			print("Activando habilidad en slot ", slot, ": ", equipped_skills[slot].skill_name)
 			emit_signal("skill_activated", equipped_skills[slot])
 		else:
-			print("No hay habilidad para activar en slot ", slot) # Debug
+			print("Habilidad no disponible en slot ", slot)
 
 func _update_ui():
 	# Actualizar visualización de slots

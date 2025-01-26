@@ -291,19 +291,19 @@ script = ExtResource("1_fv3hx")
 [node name="collision" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 256
-position = Vector2(3.13719e-06, -7.5)
+position = Vector2(156, 128)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_jmjnx")
 debug_color = Color(0.761434, 0.212628, 0.966981, 0.42)
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(156, 120)
 sprite_frames = SubResource("SpriteFrames_lvp2v")
 animation = &"run"
 frame_progress = 0.692822
 
 [node name="camera" type="Camera2D" parent="."]
-position = Vector2(0, -50)
+position = Vector2(158, 89)
 position_smoothing_speed = 2.0
 
 [node name="hurtBox" type="Area2D" parent="."]
@@ -329,60 +329,63 @@ position = Vector2(17, -10)
 shape = SubResource("CircleShape2D_mx20x")
 debug_color = Color(0.965902, 0, 0.48385, 0.42)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(160, 140)
-transform = Transform2D(1, 0, 0, 1, 160, 140)
-
-[node name="UI" parent="CanvasLayer" instance=ExtResource("4_3rqto")]
-offset_left = -181.0
-offset_top = -168.0
-offset_right = -181.0
-offset_bottom = -168.0
+[node name="UI" parent="." instance=ExtResource("4_3rqto")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 135.0
+offset_top = 146.0
+offset_right = 135.0
+offset_bottom = 146.0
+grow_horizontal = 1
+grow_vertical = 1
 size_flags_horizontal = 4
 
-[node name="HealthSystem" type="Node2D" parent="CanvasLayer"]
-position = Vector2(-147, -132)
+[node name="HealthSystem" type="Node2D" parent="."]
+position = Vector2(14, 12)
 script = ExtResource("9_6nuel")
 
-[node name="Heart1" type="Node2D" parent="CanvasLayer/HealthSystem"]
+[node name="Heart1" type="Node2D" parent="HealthSystem"]
 
-[node name="Full" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart1"]
+[node name="Full" type="Sprite2D" parent="HealthSystem/Heart1"]
 z_index = 2
 position = Vector2(-4, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("10_5sq7y")
 
-[node name="Empty" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart1"]
+[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart1"]
 visible = false
 z_index = 2
 position = Vector2(-4, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("11_ph4yw")
 
-[node name="Heart2" type="Node2D" parent="CanvasLayer/HealthSystem"]
+[node name="Heart2" type="Node2D" parent="HealthSystem"]
 
-[node name="Full" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart2"]
+[node name="Full" type="Sprite2D" parent="HealthSystem/Heart2"]
 z_index = 2
 position = Vector2(10, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("10_5sq7y")
 
-[node name="Empty" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart2"]
+[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart2"]
 visible = false
 z_index = 2
 position = Vector2(10, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("11_ph4yw")
 
-[node name="Heart3" type="Node2D" parent="CanvasLayer/HealthSystem"]
+[node name="Heart3" type="Node2D" parent="HealthSystem"]
 
-[node name="Full" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart3"]
+[node name="Full" type="Sprite2D" parent="HealthSystem/Heart3"]
 z_index = 2
 position = Vector2(24, -1)
 scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("10_5sq7y")
 
-[node name="Empty" type="Sprite2D" parent="CanvasLayer/HealthSystem/Heart3"]
+[node name="Empty" type="Sprite2D" parent="HealthSystem/Heart3"]
 visible = false
 z_index = 2
 position = Vector2(24, -1)
@@ -390,6 +393,6 @@ scale = Vector2(0.8125, 0.8125)
 texture = ExtResource("11_ph4yw")
 
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
-[connection signal="skill_activated" from="CanvasLayer/UI" to="." method="_on_skills_skill_activated"]
-[connection signal="skill_dropped" from="CanvasLayer/UI" to="." method="_on_skills_skill_dropped"]
-[connection signal="skill_equipped" from="CanvasLayer/UI" to="." method="_on_skills_skill_equipped"]
+[connection signal="skill_activated" from="UI" to="." method="_on_skills_skill_activated"]
+[connection signal="skill_dropped" from="UI" to="." method="_on_skills_skill_dropped"]
+[connection signal="skill_equipped" from="UI" to="." method="_on_skills_skill_equipped"]
