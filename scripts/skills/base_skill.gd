@@ -7,6 +7,7 @@ class_name BaseSkill
 @export var icon: Texture2D
 @export var skill_type: String = "default"
 @export var cooldown: float = 1.0
+@export var skill_icon: Texture2D
 
 @export_group("Visual Effects")
 @export var skill_animation: AnimationPlayer
