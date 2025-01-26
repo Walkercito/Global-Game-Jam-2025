@@ -12,11 +12,23 @@ position = Vector2(-6, 6)
 [node name="player" parent="." groups=["player"] instance=ExtResource("1_lvy3q")]
 light_mask = 9
 z_index = 3
-position = Vector2(161, 566)
+position = Vector2(140, 603)
 collision_layer = 3
 collision_mask = 13
 
-[node name="SkillBubble" parent="." instance=ExtResource("3_v6tve")]
+[node name="1" parent="." instance=ExtResource("3_v6tve")]
 position = Vector2(251, 588)
+skill_type = "bubble_shield"
+
+[node name="2" parent="." instance=ExtResource("3_v6tve")]
+position = Vector2(380, 587)
+
+[node name="3" parent="." instance=ExtResource("3_v6tve")]
+position = Vector2(513, 587)
+skill_type = "bubble_burst"
+
+[node name="4" parent="." instance=ExtResource("3_v6tve")]
+position = Vector2(658, 585)
+skill_type = "foam_cloud"
 
 [editable path="Demo"]

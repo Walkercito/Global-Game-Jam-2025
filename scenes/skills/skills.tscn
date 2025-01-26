@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkkfh635loiam"]
+[gd_scene load_steps=3 format=3 uid="uid://dkkfh635loiam"]
 
 [ext_resource type="Script" path="res://scripts/skills/skills.gd" id="1_skills"]
+[ext_resource type="Texture2D" uid="uid://b2xlkejv0p85e" path="res://assets/sprites/skills/skills_slot.png" id="2_frame"]
 
 [node name="Skills" type="Control"]
 layout_mode = 3
@@ -29,6 +30,30 @@ alignment = 1
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
+[node name="Frame" type="TextureRect" parent="SkillsContainer/Skill1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_frame")
+
+[node name="Icon" type="TextureRect" parent="SkillsContainer/Skill1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
 [node name="Label" type="Label" parent="SkillsContainer/Skill1"]
 layout_mode = 1
 anchors_preset = 8
@@ -48,6 +73,30 @@ horizontal_alignment = 1
 [node name="Skill2" type="Panel" parent="SkillsContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+
+[node name="Frame" type="TextureRect" parent="SkillsContainer/Skill2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_frame")
+
+[node name="Icon" type="TextureRect" parent="SkillsContainer/Skill2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
 
 [node name="Label" type="Label" parent="SkillsContainer/Skill2"]
 layout_mode = 1

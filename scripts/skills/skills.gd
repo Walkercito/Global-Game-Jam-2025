@@ -10,6 +10,8 @@ var current_slot = 0  # Slot seleccionado actualmente (0 o 1)
 
 @onready var skill_1_panel = $SkillsContainer/Skill1
 @onready var skill_2_panel = $SkillsContainer/Skill2
+@onready var skill_1_icon = $SkillsContainer/Skill1/Icon
+@onready var skill_2_icon = $SkillsContainer/Skill2/Icon
 
 func _ready():
 	print("Sistema de habilidades inicializado") # Debug
@@ -109,11 +111,24 @@ func _activate_skill(slot: int):
 
 func _update_ui():
 	# Actualizar visualización de slots
-	skill_1_panel.modulate = Color(1, 1, 1, 1) if equipped_skills[0] else Color(0.5, 0.5, 0.5, 0.5)
-	skill_2_panel.modulate = Color(1, 1, 1, 1) if equipped_skills[1] else Color(0.5, 0.5, 0.5, 0.5)
+	skill_1_panel.modulate = Color(1, 1, 1, 1)
+	skill_2_panel.modulate = Color(1, 1, 1, 1)
+	
+	# Actualizar iconos
+	if equipped_skills[0]:
+		skill_1_icon.texture = equipped_skills[0].skill_icon
+		skill_1_icon.visible = true
+	else:
+		skill_1_icon.visible = false
+		
+	if equipped_skills[1]:
+		skill_2_icon.texture = equipped_skills[1].skill_icon
+		skill_2_icon.visible = true
+	else:
+		skill_2_icon.visible = false
 	
 	# Resaltar slot actual
 	var current_panel = skill_1_panel if current_slot == 0 else skill_2_panel
-	current_panel.modulate = Color(1.2, 1.2, 1.2, 1) if equipped_skills[current_slot] else Color(0.7, 0.7, 0.7, 0.5)
+	current_panel.modulate = Color(1.2, 1.2, 1.2, 1)
 	
 	print("UI actualizada - Slot actual: ", current_slot) # Debug

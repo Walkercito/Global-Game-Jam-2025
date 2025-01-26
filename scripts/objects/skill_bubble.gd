@@ -3,7 +3,7 @@ extends Node2D
 
 signal skill_picked(skill_data: BaseSkill)
 
-@export_enum("acid_bomb", "spy_bubble", "bubble_burst", "bubble_jump", "protective_bubble") var skill_type: String = "acid_bomb":
+@export_enum("acid_bomb", "spy_bubble", "bubble_burst", "bubble_jump", "protective_bubble", "bubble_shield", "protective_bubble", "foam_cloud") var skill_type: String = "acid_bomb":
 	set(value):
 		skill_type = value
 		if Engine.is_editor_hint():
