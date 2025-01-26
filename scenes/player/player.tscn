@@ -325,8 +325,8 @@ radius = 4.0
 
 [node name="player" type="CharacterBody2D"]
 z_index = 90
-collision_layer = 2
-collision_mask = 260
+collision_layer = 3
+collision_mask = 460
 script = ExtResource("1_fv3hx")
 
 [node name="collision" type="CollisionShape2D" parent="."]

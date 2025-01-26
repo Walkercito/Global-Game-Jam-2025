@@ -117,9 +117,15 @@ func update_animations() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("skill_1"):
-		skills_manager._activate_skill(0)
+		if null:
+			pass
+		else:
+			skills_manager._activate_skill(0)
 	elif event.is_action_pressed("skill_2"):
-		skills_manager._activate_skill(1)
+		if null:
+			pass
+		else:
+			skills_manager._activate_skill(1)
 
 
 func _on_skills_skill_activated(skill: BaseSkill) -> void:

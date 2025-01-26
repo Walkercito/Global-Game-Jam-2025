@@ -1,4 +1,4 @@
-[gd_scene load_steps=313 format=4 uid="uid://cvnsnrwvhfbr0"]
+[gd_scene load_steps=315 format=4 uid="uid://cvnsnrwvhfbr0"]
 
 [ext_resource type="Texture2D" uid="uid://comvs2riqqk3b" path="res://assets/sprites/fondos/clouds/clouds4/1.png" id="1_6anio"]
 [ext_resource type="Script" path="res://main.gd" id="1_cvkha"]
@@ -109,6 +109,8 @@
 [ext_resource type="Texture2D" uid="uid://dth6rxwjcoa8u" path="res://assets/sprites/final_level/objects/Benches/2.png" id="101_svgpy"]
 [ext_resource type="Texture2D" uid="uid://lwdkw31xd2jy" path="res://assets/sprites/final_level/objects/Other/Tree3.png" id="102_nxyh2"]
 [ext_resource type="Texture2D" uid="uid://c0fpq214oc83l" path="res://assets/sprites/final_level/tiles/Tile_96.png" id="102_tguyj"]
+[ext_resource type="AudioStream" uid="uid://b0i6ypg8iock" path="res://assets/music/kim_lightyear_leave_the_world_tonight_chiptune_edit_loop_132102.mp3" id="110_fmouk"]
+[ext_resource type="LabelSettings" uid="uid://cp78iyrrg8o6u" path="res://assets/fonts/new_label_settings.tres" id="110_u6sel"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rj1ny"]
 texture = ExtResource("1_v3l5s")
@@ -1838,19 +1840,23 @@ grow_vertical = 2
 size_flags_horizontal = 4
 
 [node name="A Cat\'s Bubble" type="Label" parent="UI/Control"]
-offset_left = 111.0
-offset_top = 24.0
-offset_right = 222.0
-offset_bottom = 47.0
+layout_mode = 0
+offset_left = 53.0
+offset_top = 21.0
+offset_right = 277.0
+offset_bottom = 44.0
 text = "A Cat's Bubble"
+label_settings = ExtResource("110_u6sel")
 
 [node name="Oddessy" type="Label" parent="UI/Control"]
-offset_left = 111.0
-offset_top = 44.0
-offset_right = 222.0
-offset_bottom = 70.0
+layout_mode = 0
+offset_left = 98.0
+offset_top = 39.0
+offset_right = 209.0
+offset_bottom = 65.0
 text = "Odessey
 "
+label_settings = ExtResource("110_u6sel")
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
@@ -1880,7 +1886,7 @@ grow_vertical = 0
 layout_mode = 2
 text = "Jugar"
 
-[node name="Settings" type="Button" parent="UI/Buttons/HBoxContainer"]
+[node name="Settings" type="MenuButton" parent="UI/Buttons/HBoxContainer"]
 layout_mode = 2
 text = "Configuración"
 
@@ -1888,4 +1894,11 @@ text = "Configuración"
 layout_mode = 2
 text = "Salir"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("110_fmouk")
+autoplay = true
+parameters/looping = true
+
 [connection signal="button_down" from="UI/Buttons/HBoxContainer/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="UI/Buttons/HBoxContainer/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="UI/Buttons/HBoxContainer/Exit" to="." method="_on_exit_button_down"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5grj7vuv2pvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcpfu"]
+size = Vector2(24, 154)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urxay"]
+size = Vector2(24, 154)
+
+[node name="leader_coll" type="StaticBody2D"]
+collision_layer = 256
+collision_mask = 202
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 202
+collision_mask = 256
+constant_linear_velocity = Vector2(0, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_tcpfu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_urxay")

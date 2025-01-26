@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi5be6bsveror"]
+
+[ext_resource type="Texture2D" uid="uid://b57fvgo2jfbqd" path="res://assets/sprites/level_two/4 Animated objects/Trap.png" id="1_7v8un"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5nil"]
+atlas = ExtResource("1_7v8un")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ihgw"]
+atlas = ExtResource("1_7v8un")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k00r6"]
+atlas = ExtResource("1_7v8un")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x53e6"]
+atlas = ExtResource("1_7v8un")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lklhp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5nil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ihgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k00r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x53e6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="trap" type="Node2D"]
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_lklhp")
+frame_progress = 0.12153
