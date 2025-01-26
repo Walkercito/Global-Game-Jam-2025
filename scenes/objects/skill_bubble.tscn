@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bathqig87udh7"]
+[gd_scene load_steps=6 format=3 uid="uid://bathqig87udh7"]
 
 [ext_resource type="Script" path="res://scripts/objects/skill_bubble.gd" id="1_bubble"]
-[ext_resource type="Texture2D" uid="uid://c5l6y4x7by6mf" path="res://assets/bubble_skill.png" id="2_bubble"]
+[ext_resource type="Texture2D" uid="uid://de25qora4y6e6" path="res://assets/sprites/bubbles/bubbles 1.png" id="2_knete"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
 radius = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h36rq"]
+atlas = ExtResource("2_knete")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bubble")
+"texture": SubResource("AtlasTexture_h36rq")
 }],
 "loop": true,
 "name": &"idle",
@@ -28,6 +32,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_1")
 animation = &"idle"
 autoplay = "idle"

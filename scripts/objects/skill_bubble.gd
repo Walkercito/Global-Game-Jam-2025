@@ -18,14 +18,19 @@ func _ready():
 	if not Engine.is_editor_hint():
 		area.connect("body_entered", _on_body_entered)
 		area.connect("body_exited", _on_body_exited)
+		add_to_group("skill_bubbles")
 		_load_skill()
+		print("Burbuja de habilidad creada: ", skill_type) # Debug
 
 func _load_skill():
 	var skill_script = load("res://scripts/skills/" + skill_type + ".gd")
 	if skill_script:
-		var skill: BaseSkill = skill_script.new()
-		skill._ready() # Inicializar valores base
-		set_skill(skill)
+		skill_data = skill_script.new()
+		if skill_data.has_method("_ready"):
+			skill_data._ready()
+		print("Habilidad cargada: ", skill_data.skill_name) # Debug
+	else:
+		print("ERROR: No se pudo cargar el script de habilidad: ", skill_type) # Debug
 
 func set_skill(data: BaseSkill) -> void:
 	skill_data = data
@@ -47,6 +52,7 @@ func _input(event: InputEvent) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		interaction_label.visible = true
+		print("Jugador puede recoger: ", skill_type) # Debug
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):

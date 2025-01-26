@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://bpg2i47svkc3t"]
+
+[ext_resource type="Texture2D" uid="uid://wsic3poxtvlb" path="res://assets/sprites/bird/bird_attack.png" id="1_rk5vf"]
+[ext_resource type="Texture2D" uid="uid://o5xih3wtmtoi" path="res://assets/sprites/bird/bird_idle.png" id="2_eek08"]
+
+[sub_resource type="GDScript" id="GDScript_082yy"]
+script/source = "extends CharacterBody2D
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llupr"]
+atlas = ExtResource("1_rk5vf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50n68"]
+atlas = ExtResource("1_rk5vf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okh72"]
+atlas = ExtResource("2_eek08")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xixbt"]
+atlas = ExtResource("2_eek08")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26cv7"]
+atlas = ExtResource("2_eek08")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ikrw"]
+atlas = ExtResource("2_eek08")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qoeaj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llupr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50n68")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okh72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xixbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26cv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ikrw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0d0wo"]
+radius = 11.0
+
+[node name="Bird" type="CharacterBody2D"]
+script = SubResource("GDScript_082yy")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qoeaj")
+animation = &"attack"
+frame = 1
+frame_progress = 0.219027
+
+[node name="hurtBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0d0wo")
+
+[node name="hitBox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_0d0wo")
+debug_color = Color(0.945098, 0.207843, 0, 0.419608)
