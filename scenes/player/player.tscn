@@ -371,6 +371,7 @@ shape = SubResource("CircleShape2D_mx20x")
 debug_color = Color(0.965902, 0, 0.48385, 0.42)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 offset = Vector2(160, 140)
 transform = Transform2D(1, 0, 0, 1, 160, 140)
 
