@@ -23,8 +23,6 @@ var can_scratch: bool = true
 var is_scratching: bool = false
 
 @onready var animationController = $sprite
-@onready var scratch_hitbox = $scratch_hitbox
-@onready var scratch_cooldown = $scratch_cooldown
 @onready var skills_manager = $Skills
 @onready var camera = $camera
 
@@ -32,13 +30,6 @@ var is_scratching: bool = false
 @onready var ui_scale_tween: Tween
 
 func _ready():
-	scratch_cooldown = Timer.new()
-	scratch_cooldown.one_shot = true
-	scratch_cooldown.wait_time = SCRATCH_COOLDOWN
-	scratch_cooldown.connect("timeout", _on_scratch_cooldown_timeout)
-	add_child(scratch_cooldown)
-	
-	
 	animationController.animation_finished.connect(_on_animation_finished)
 	print("Sistema de jugador inicializado") # Debug
 
@@ -95,29 +86,6 @@ func _physics_process(delta):
 	if not was_on_floor and is_on_floor():
 		can_air_dash = true
 
-
-	if Input.is_action_just_pressed("attack") and can_scratch and not is_dashing:
-		perform_scratch()
-
-func perform_scratch() -> void:
-	if not can_scratch or is_scratching:
-		return
-
-	is_scratching = true
-	can_scratch = false
-	scratch_cooldown.start()
-	
-	
-	if scratch_hitbox:
-		scratch_hitbox.position.x = abs(scratch_hitbox.position.x) * (1 if facing_right else -1)
-		var bodies = scratch_hitbox.get_overlapping_bodies()
-		
-		for body in bodies:
-			if body.is_in_group("enemies") and body.has_method("take_damage"):
-				body.take_damage(SCRATCH_DAMAGE)
-
-	animationController.stop() 
-	animationController.play("scratch")
 
 func _on_animation_finished() -> void:
 	if animationController.animation == "scratch":

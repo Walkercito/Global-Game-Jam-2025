@@ -1,4 +1,4 @@
-[gd_scene load_steps=359 format=4 uid="uid://dxfhlb08tvxwh"]
+[gd_scene load_steps=360 format=4 uid="uid://dxfhlb08tvxwh"]
 
 [ext_resource type="Script" path="res://scripts/levelOne/level_one.gd" id="1_q5tdb"]
 [ext_resource type="Texture2D" uid="uid://b254e6qi0axxm" path="res://assets/sprites/level_one/1 Tiles/IndustrialTile_01.png" id="1_ymt7v"]
@@ -1934,6 +1934,9 @@ b = Vector2(1330, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqrgn"]
 size = Vector2(6, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1afr"]
+size = Vector2(39, 64)
+
 [node name="levelOne" type="Node2D"]
 script = ExtResource("1_q5tdb")
 
@@ -2000,7 +2003,7 @@ position = Vector2(2333, -133)
 [node name="entity" type="Node2D" parent="."]
 
 [node name="player" parent="entity" instance=ExtResource("138_ybfbh")]
-position = Vector2(2173, -174)
+position = Vector2(109, 172)
 collision_layer = 3
 collision_mask = 12
 
@@ -2029,10 +2032,19 @@ position = Vector2(-3, -32)
 shape = SubResource("RectangleShape2D_hqrgn")
 debug_color = Color(0.948541, 4.33177e-06, 0.577821, 0.42)
 
+[node name="change_level" type="Area2D" parent="."]
+position = Vector2(5120, -106)
+
+[node name="col" type="CollisionShape2D" parent="change_level"]
+position = Vector2(31.5, -6)
+shape = SubResource("RectangleShape2D_j1afr")
+debug_color = Color(0, 0, 0, 0.42)
+
 [connection signal="body_entered" from="world/animatedSprites/entry/open-close" to="." method="_on_openclose_body_entered"]
 [connection signal="body_entered" from="fov" to="." method="_on_fov_body_entered"]
 [connection signal="body_exited" from="fov" to="." method="_on_fov_body_exited"]
 [connection signal="body_exited" from="close_door" to="." method="_on_close_door_body_exited"]
+[connection signal="body_entered" from="change_level" to="." method="_on_change_level_body_entered"]
 
 [editable path="world/animatedSprites/entry"]
 [editable path="entity/player"]
